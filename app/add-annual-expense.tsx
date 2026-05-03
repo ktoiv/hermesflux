@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     ScrollView,
     KeyboardAvoidingView,
+    Keyboard,
     Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -52,7 +53,7 @@ export default function AddAnnualExpenseScreen() {
                 <ScrollView
                     style={styles.flex}
                     contentContainerStyle={styles.scrollContent}
-                    keyboardShouldPersistTaps="handled"
+                    keyboardShouldPersistTaps="handled" onScrollBeginDrag={Keyboard.dismiss}
                     showsVerticalScrollIndicator={false}
                 >
                     <Text style={[styles.fieldLabel, { color: colors.onSurfaceVariant }]}>Expense Name</Text>

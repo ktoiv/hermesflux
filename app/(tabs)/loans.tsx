@@ -276,7 +276,7 @@ export default function LoansScreen() {
                             ]}
                             keyboardType="decimal-pad"
                             value={editRate}
-                            onChangeText={(t) => setEditRate(t.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'))}
+                            onChangeText={(t) => setEditRate(t.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').replace(/(\..*)\./g, '$1'))}
                             selectTextOnFocus
                         />
 
@@ -290,7 +290,7 @@ export default function LoansScreen() {
                             ]}
                             keyboardType="decimal-pad"
                             value={editPayment}
-                            onChangeText={(t) => setEditPayment(t.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'))}
+                            onChangeText={(t) => setEditPayment(t.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').replace(/(\..*)\./g, '$1'))}
                             selectTextOnFocus
                         />
 

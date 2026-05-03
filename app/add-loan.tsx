@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     ScrollView,
     KeyboardAvoidingView,
+    Keyboard,
     Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -69,7 +70,7 @@ export default function AddLoanScreen() {
                 <ScrollView
                     style={styles.flex}
                     contentContainerStyle={styles.scrollContent}
-                    keyboardShouldPersistTaps="handled"
+                    keyboardShouldPersistTaps="handled" onScrollBeginDrag={Keyboard.dismiss}
                     showsVerticalScrollIndicator={false}
                 >
                     <Text style={[styles.fieldLabel, { color: colors.onSurfaceVariant }]}>Loan Name</Text>
@@ -105,7 +106,7 @@ export default function AddLoanScreen() {
                                     keyboardType="decimal-pad"
                                     value={originalAmount}
                                     onChangeText={(t) =>
-                                        setOriginalAmount(t.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'))
+                                        setOriginalAmount(t.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').replace(/(\..*)\./g, '$1'))
                                     }
                                 />
                             </View>
@@ -121,7 +122,7 @@ export default function AddLoanScreen() {
                                     keyboardType="decimal-pad"
                                     value={remaining}
                                     onChangeText={(t) =>
-                                        setRemaining(t.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'))
+                                        setRemaining(t.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').replace(/(\..*)\./g, '$1'))
                                     }
                                 />
                             </View>
@@ -139,7 +140,7 @@ export default function AddLoanScreen() {
                                     keyboardType="decimal-pad"
                                     value={interestRate}
                                     onChangeText={(t) =>
-                                        setInterestRate(t.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'))
+                                        setInterestRate(t.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').replace(/(\..*)\./g, '$1'))
                                     }
                                 />
                                 <Text style={[styles.currencySign, { color: colors.outline }]}>%</Text>
@@ -156,7 +157,7 @@ export default function AddLoanScreen() {
                                     keyboardType="decimal-pad"
                                     value={monthlyPayment}
                                     onChangeText={(t) =>
-                                        setMonthlyPayment(t.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'))
+                                        setMonthlyPayment(t.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1').replace(/(\..*)\./g, '$1'))
                                     }
                                 />
                             </View>
