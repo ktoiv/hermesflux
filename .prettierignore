@@ -1,0 +1,7 @@
+node_modules
+dist
+.expo
+*.db
+*.db-wal
+*.db-shm
+app-example

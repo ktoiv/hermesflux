@@ -1,125 +1,125 @@
 ---
 name: Hermes Finance Design System
 colors:
-  surface: '#f9faf6'
-  surface-dim: '#d9dad7'
-  surface-bright: '#f9faf6'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f3f4f0'
-  surface-container: '#edeeeb'
-  surface-container-high: '#e8e8e5'
-  surface-container-highest: '#e2e3df'
-  on-surface: '#1a1c1a'
-  on-surface-variant: '#414943'
-  inverse-surface: '#2f312f'
-  inverse-on-surface: '#f0f1ed'
-  outline: '#717973'
-  outline-variant: '#c1c8c1'
-  surface-tint: '#3d6751'
-  primary: '#3d6751'
-  on-primary: '#ffffff'
-  primary-container: '#a8d5ba'
-  on-primary-container: '#345d48'
-  inverse-primary: '#a4d1b6'
-  secondary: '#48626f'
-  on-secondary: '#ffffff'
-  secondary-container: '#c8e4f3'
-  on-secondary-container: '#4c6673'
-  tertiary: '#835053'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#fcbabd'
-  on-tertiary-container: '#79474b'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#bfedd1'
-  primary-fixed-dim: '#a4d1b6'
-  on-primary-fixed: '#002113'
-  on-primary-fixed-variant: '#254f3a'
-  secondary-fixed: '#cbe7f6'
-  secondary-fixed-dim: '#afcbda'
-  on-secondary-fixed: '#011f2a'
-  on-secondary-fixed-variant: '#304a57'
-  tertiary-fixed: '#ffdadb'
-  tertiary-fixed-dim: '#f7b6b9'
-  on-tertiary-fixed: '#340f13'
-  on-tertiary-fixed-variant: '#68393d'
-  background: '#f9faf6'
-  on-background: '#1a1c1a'
-  surface-variant: '#e2e3df'
+    surface: '#f9faf6'
+    surface-dim: '#d9dad7'
+    surface-bright: '#f9faf6'
+    surface-container-lowest: '#ffffff'
+    surface-container-low: '#f3f4f0'
+    surface-container: '#edeeeb'
+    surface-container-high: '#e8e8e5'
+    surface-container-highest: '#e2e3df'
+    on-surface: '#1a1c1a'
+    on-surface-variant: '#414943'
+    inverse-surface: '#2f312f'
+    inverse-on-surface: '#f0f1ed'
+    outline: '#717973'
+    outline-variant: '#c1c8c1'
+    surface-tint: '#3d6751'
+    primary: '#3d6751'
+    on-primary: '#ffffff'
+    primary-container: '#a8d5ba'
+    on-primary-container: '#345d48'
+    inverse-primary: '#a4d1b6'
+    secondary: '#48626f'
+    on-secondary: '#ffffff'
+    secondary-container: '#c8e4f3'
+    on-secondary-container: '#4c6673'
+    tertiary: '#835053'
+    on-tertiary: '#ffffff'
+    tertiary-container: '#fcbabd'
+    on-tertiary-container: '#79474b'
+    error: '#ba1a1a'
+    on-error: '#ffffff'
+    error-container: '#ffdad6'
+    on-error-container: '#93000a'
+    primary-fixed: '#bfedd1'
+    primary-fixed-dim: '#a4d1b6'
+    on-primary-fixed: '#002113'
+    on-primary-fixed-variant: '#254f3a'
+    secondary-fixed: '#cbe7f6'
+    secondary-fixed-dim: '#afcbda'
+    on-secondary-fixed: '#011f2a'
+    on-secondary-fixed-variant: '#304a57'
+    tertiary-fixed: '#ffdadb'
+    tertiary-fixed-dim: '#f7b6b9'
+    on-tertiary-fixed: '#340f13'
+    on-tertiary-fixed-variant: '#68393d'
+    background: '#f9faf6'
+    on-background: '#1a1c1a'
+    surface-variant: '#e2e3df'
 typography:
-  display:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 40px
-    fontWeight: '600'
-    lineHeight: 48px
-    letterSpacing: -0.02em
-  h1:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 32px
-    fontWeight: '600'
-    lineHeight: 40px
-    letterSpacing: -0.01em
-  h2:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 24px
-    fontWeight: '500'
-    lineHeight: 32px
-    letterSpacing: -0.01em
-  h3:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 20px
-    fontWeight: '500'
-    lineHeight: 28px
-    letterSpacing: '0'
-  body-lg:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 18px
-    fontWeight: '400'
-    lineHeight: 28px
-    letterSpacing: '0'
-  body-md:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 16px
-    fontWeight: '400'
-    lineHeight: 24px
-    letterSpacing: '0'
-  body-sm:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 14px
-    fontWeight: '400'
-    lineHeight: 20px
-    letterSpacing: '0'
-  label-md:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 12px
-    fontWeight: '600'
-    lineHeight: 16px
-    letterSpacing: 0.04em
-  label-sm:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 10px
-    fontWeight: '600'
-    lineHeight: 12px
-    letterSpacing: 0.05em
+    display:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 40px
+        fontWeight: '600'
+        lineHeight: 48px
+        letterSpacing: -0.02em
+    h1:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 32px
+        fontWeight: '600'
+        lineHeight: 40px
+        letterSpacing: -0.01em
+    h2:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 24px
+        fontWeight: '500'
+        lineHeight: 32px
+        letterSpacing: -0.01em
+    h3:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 20px
+        fontWeight: '500'
+        lineHeight: 28px
+        letterSpacing: '0'
+    body-lg:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 18px
+        fontWeight: '400'
+        lineHeight: 28px
+        letterSpacing: '0'
+    body-md:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 16px
+        fontWeight: '400'
+        lineHeight: 24px
+        letterSpacing: '0'
+    body-sm:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 14px
+        fontWeight: '400'
+        lineHeight: 20px
+        letterSpacing: '0'
+    label-md:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 12px
+        fontWeight: '600'
+        lineHeight: 16px
+        letterSpacing: 0.04em
+    label-sm:
+        fontFamily: Plus Jakarta Sans
+        fontSize: 10px
+        fontWeight: '600'
+        lineHeight: 12px
+        letterSpacing: 0.05em
 rounded:
-  sm: 0.25rem
-  DEFAULT: 0.5rem
-  md: 0.75rem
-  lg: 1rem
-  xl: 1.5rem
-  full: 9999px
+    sm: 0.25rem
+    DEFAULT: 0.5rem
+    md: 0.75rem
+    lg: 1rem
+    xl: 1.5rem
+    full: 9999px
 spacing:
-  unit: 4px
-  xs: 4px
-  sm: 8px
-  md: 16px
-  lg: 24px
-  xl: 32px
-  xxl: 48px
-  gutter: 24px
-  margin: 32px
+    unit: 4px
+    xs: 4px
+    sm: 8px
+    md: 16px
+    lg: 24px
+    xl: 32px
+    xxl: 48px
+    gutter: 24px
+    margin: 32px
 ---
 
 ## Brand & Style
@@ -130,7 +130,7 @@ The aesthetic is **Calm and Airy**, utilizing generous whitespace and a "Paper &
 
 ## Colors
 
-The palette is derived from natural, desaturated tones to maintain a low cognitive load. 
+The palette is derived from natural, desaturated tones to maintain a low cognitive load.
 
 - **Foundation:** The background uses a warm parchment tone (#F8F6F0) to reduce eye strain and distinguish the canvas from pure white components.
 - **Primary (Sage):** Used for primary actions and "growth" indicators. It represents stability and balance.
@@ -140,7 +140,7 @@ The palette is derived from natural, desaturated tones to maintain a low cogniti
 
 ## Typography
 
-This design system employs **Plus Jakarta Sans** for its humanist characteristics and modern, rounded terminals that align with the 4px grid. 
+This design system employs **Plus Jakarta Sans** for its humanist characteristics and modern, rounded terminals that align with the 4px grid.
 
 Typography is used as a functional hierarchy tool. Headlines are set with slightly tighter tracking to feel cohesive, while body text is given ample line height to ensure readability and "breathability." All type scales are multiples of 4px to maintain a strict mathematical rhythm across the interface. Use "Medium" (500) and "Semi-Bold" (600) weights sparingly to emphasize information without cluttering the visual field.
 
@@ -162,7 +162,7 @@ Avoid inner shadows or complex gradients. The depth should feel like paper sheet
 
 ## Shapes
 
-The design system uses a **Rounded** shape language to evoke friendliness and accessibility. 
+The design system uses a **Rounded** shape language to evoke friendliness and accessibility.
 
 Standard components (Buttons, Inputs) utilize a 0.5rem (8px) corner radius. Larger containers (Cards) use a 1rem (16px) radius to create a softer, more protective appearance for financial data. Pill-shapes are reserved exclusively for status indicators (Tags/Chips) to differentiate them from interactive buttons.
 
