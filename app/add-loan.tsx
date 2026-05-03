@@ -30,17 +30,20 @@ export default function AddLoanScreen() {
     const [remaining, setRemaining] = useState('');
     const [interestRate, setInterestRate] = useState('');
     const [monthlyPayment, setMonthlyPayment] = useState('');
+    const [portion, setPortion] = useState('100');
     const [notes, setNotes] = useState('');
 
     const handleSave = async () => {
         if (!name.trim() || !remaining.trim() || !interestRate.trim() || !monthlyPayment.trim()) return;
+        const n = (t: string) => t.replace(',', '.');
         await createLoan({
             name: name.trim(),
             lender: lender.trim() || null,
-            original_amount: originalAmount ? parseFloat(originalAmount) : null,
-            remaining: parseFloat(remaining),
-            interest_rate: parseFloat(interestRate),
-            monthly_payment: parseFloat(monthlyPayment),
+            original_amount: originalAmount ? parseFloat(n(originalAmount)) : null,
+            remaining: parseFloat(n(remaining)),
+            interest_rate: parseFloat(n(interestRate)),
+            monthly_payment: parseFloat(n(monthlyPayment)),
+            portion: parseFloat(n(portion)) || 100,
             notes: notes.trim() || null,
         });
         router.back();
@@ -163,6 +166,30 @@ export default function AddLoanScreen() {
                             </View>
                         </View>
                     </View>
+
+                    <Text style={[styles.fieldLabel, { color: colors.onSurfaceVariant }]}>Your Portion (%)</Text>
+                    <View style={[styles.amountRow, { backgroundColor: colors.surfaceContainerLow }]}>
+                        <TextInput
+                            style={[styles.amountInput, { color: colors.onSurface }]}
+                            placeholder="100"
+                            placeholderTextColor={colors.outline}
+                            keyboardType="number-pad"
+                            value={portion}
+                            onChangeText={(t) => setPortion(t.replace(/[^0-9]/g, '').slice(0, 3))}
+                        />
+                        <Text style={[styles.currencySign, { color: colors.outline }]}>%</Text>
+                    </View>
+
+                    {portion && parseFloat(portion) > 0 && parseFloat(portion) < 100 && remaining && (
+                        <View style={[styles.paidPreview, { backgroundColor: colors.surfaceContainerLow }]}>
+                            <View style={styles.paidPreviewTop}>
+                                <Text style={[styles.paidPreviewLabel, { color: colors.onSurfaceVariant }]}>Your Share</Text>
+                                <Text style={[styles.paidPreviewValue, { color: colors.primary }]}>
+                                    {currencySymbol}{(parseFloat(remaining) * parseFloat(portion) / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                </Text>
+                            </View>
+                        </View>
+                    )}
 
                     {originalAmount && remaining && parseFloat(originalAmount) > 0 && (
                         <View style={[styles.paidPreview, { backgroundColor: colors.surfaceContainerLow }]}>

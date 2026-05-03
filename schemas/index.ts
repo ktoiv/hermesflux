@@ -87,6 +87,7 @@ export const CreateLoanSchema = z.object({
     remaining: z.number().min(0, 'Remaining cannot be negative'),
     interest_rate: z.number().min(0, 'Rate cannot be negative'),
     monthly_payment: z.number().positive('Payment must be positive'),
+    portion: z.number().min(0).max(100).default(100),
     notes: z.string().optional().nullable(),
 });
 export type CreateLoan = z.infer<typeof CreateLoanSchema>;

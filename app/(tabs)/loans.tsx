@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity, Modal, Platform } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity, Modal, Platform, Keyboard } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -162,9 +162,9 @@ export default function LoansScreen() {
 
     const handleSaveEdit = async () => {
         if (!editing) return;
-        const rate = parseFloat(editRate);
-        const payment = parseFloat(editPayment);
-        const portion = parseFloat(editPortion);
+        const rate = parseFloat(editRate.replace(',', '.'));
+        const payment = parseFloat(editPayment.replace(',', '.'));
+        const portion = parseFloat(editPortion.replace(',', '.'));
         if (isNaN(rate) || rate < 0 || isNaN(payment) || payment <= 0 || isNaN(portion) || portion < 0 || portion > 100)
             return;
         await updateLoan(editing.id, { interest_rate: rate, monthly_payment: payment, portion });
@@ -257,12 +257,12 @@ export default function LoansScreen() {
                 </View>
             </ScrollView>
 
-            <Modal visible={editing != null} transparent animationType="fade" onRequestClose={() => setEditing(null)}>
-                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setEditing(null)}>
+            <Modal visible={editing != null} transparent animationType="fade" onRequestClose={() => { Keyboard.dismiss(); setEditing(null); }}>
+                <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => { Keyboard.dismiss(); setEditing(null); }}>
                     <TouchableOpacity
                         style={[styles.modalCard, { backgroundColor: colors.surface }]}
                         activeOpacity={1}
-                        onPress={() => {}}
+                        onPress={Keyboard.dismiss}
                     >
                         <Text style={[styles.modalTitle, { color: colors.onSurface }]}>{editing?.name}</Text>
 

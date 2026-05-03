@@ -37,8 +37,8 @@ export async function createLoan(data: CreateLoan): Promise<Loan> {
     const parsed = CreateLoanSchema.parse(data);
     const db = await getDatabase();
     const result = await db.runAsync(
-        `INSERT INTO loans (name, lender, original_amount, remaining, interest_rate, monthly_payment, notes)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO loans (name, lender, original_amount, remaining, interest_rate, monthly_payment, portion, notes)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         [
             parsed.name,
             parsed.lender ?? null,
@@ -46,6 +46,7 @@ export async function createLoan(data: CreateLoan): Promise<Loan> {
             parsed.remaining,
             parsed.interest_rate,
             parsed.monthly_payment,
+            parsed.portion ?? 100,
             parsed.notes ?? null,
         ],
     );
