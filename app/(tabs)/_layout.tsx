@@ -1,33 +1,100 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { StyleSheet, View, Text, Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useActiveTheme } from '@/hooks/use-active-theme';
+
+const TAB_ICONS: Record<string, { focused: string; default: string }> = {
+  index: { focused: 'dashboard', default: 'dashboard' },
+  portfolio: { focused: 'account-balance-wallet', default: 'account-balance-wallet' },
+  annual: { focused: 'event', default: 'event' },
+  loans: { focused: 'account-balance', default: 'account-balance' },
+  settings: { focused: 'settings', default: 'settings' },
+};
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const colorScheme = useActiveTheme();
+  const colors = Colors[colorScheme ?? 'light'];
+  const insets = useSafeAreaInsets();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopWidth: 0,
+          height: 80 + insets.bottom,
+          paddingBottom: insets.bottom + 14,
+          paddingTop: 6,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 0.02,
+          shadowRadius: 20,
+          elevation: 4,
+        },
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.tabIconDefault,
+        tabBarShowLabel: true,
+        tabBarLabelStyle: {
+          fontSize: 11,
+          lineHeight: 14,
+          fontWeight: '600',
+          marginTop: 4,
+          marginBottom: 4,
+        },
+        tabBarIconStyle: {
+          marginBottom: 0,
+        },
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Dashboard',
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialIcons
+              name={focused ? 'dashboard' : 'dashboard'}
+              size={24}
+              color={color}
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="portfolio"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Portfolio',
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="account-balance-wallet" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="annual"
+        options={{
+          title: 'Annual',
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="event" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="loans"
+        options={{
+          title: 'Loans',
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="account-balance" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'Settings',
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="settings" size={24} color={color} />
+          ),
         }}
       />
     </Tabs>
