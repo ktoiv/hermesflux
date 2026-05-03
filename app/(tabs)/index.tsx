@@ -8,7 +8,7 @@ import Svg, { Circle } from 'react-native-svg';
 import { Colors, Typography, Spacing, Radius } from '@/constants/theme';
 import { useActiveTheme } from '@/hooks/use-active-theme';
 import { useSettings } from '@/contexts/settings';
-import { getAllTransactions, getMonthlySummary, getCategoryBreakdown } from '@/services/transactions';
+import { getAllTransactions, getMonthlySummary, getCategoryBreakdown, deleteTransaction } from '@/services/transactions';
 import { getMonthlyAnnualTotal, getAnnualBreakdown } from '@/services/annual-expenses';
 import { getLoansSummary, applyMonthlyPayments } from '@/services/loans';
 import { generateTransactionsFromRecurring } from '@/services/recurring';
@@ -53,10 +53,12 @@ function TransactionRow({
     tx,
     colors,
     symbol = '$',
+    onDelete,
 }: {
     tx: TransactionWithJoins;
     colors: typeof Colors.light;
     symbol?: string;
+    onDelete?: (id: number) => void;
 }) {
     const isIncome = tx.type === 'income';
     const bgColor = tx.category_color
@@ -81,10 +83,17 @@ function TransactionRow({
                     <Text style={[styles.transactionDate, { color: colors.outline }]}>{formatDateLabel(tx.date)}</Text>
                 </View>
             </View>
-            <Text style={[styles.transactionAmount, { color: amountColor }]}>
-                {isIncome ? '+' : '-'}
-                {formatCurrency(tx.amount, symbol)}
-            </Text>
+            <View style={styles.transactionRight}>
+                <Text style={[styles.transactionAmount, { color: amountColor }]}>
+                    {isIncome ? '+' : '-'}
+                    {formatCurrency(tx.amount, symbol)}
+                </Text>
+                {onDelete && (
+                    <TouchableOpacity onPress={() => onDelete(tx.id)} style={styles.transactionDeleteBtn}>
+                        <MaterialIcons name="delete-outline" size={16} color={colors.outline} />
+                    </TouchableOpacity>
+                )}
+            </View>
         </View>
     );
 }
@@ -263,6 +272,22 @@ export default function DashboardScreen() {
         }, [ms]),
     );
 
+    const handleDeleteTx = async (id: number) => {
+        await deleteTransaction(id);
+        const [newMonthly, newTxs, newBreakdown, annualTotal, annualBreakdown, loansSummary] = await Promise.all([
+            getMonthlySummary(ms),
+            getAllTransactions(ms),
+            getCategoryBreakdown(ms),
+            getMonthlyAnnualTotal(),
+            getAnnualBreakdown(),
+            getLoansSummary(),
+        ]);
+        setTransactions(newTxs);
+        const totalExpenses = newMonthly.expenses + annualTotal + loansSummary.totalMonthlyPayment;
+        setSummary({ ...newMonthly, expenses: totalExpenses, net: newMonthly.income - totalExpenses });
+        setBreakdown(newBreakdown);
+    };
+
     const goPrevMonth = () => {
         setViewMonth((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
     };
@@ -367,7 +392,7 @@ export default function DashboardScreen() {
                 <View style={styles.transactionsList}>
                     {transactions.length > 0 ? (
                         transactions.map((tx) => (
-                            <TransactionRow key={tx.id} tx={tx} colors={colors} symbol={currencySymbol} />
+                            <TransactionRow key={tx.id} tx={tx} colors={colors} symbol={currencySymbol} onDelete={handleDeleteTx} />
                         ))
                     ) : (
                         <Text
@@ -553,5 +578,13 @@ const styles = StyleSheet.create({
         fontSize: Typography.bodyMd.fontSize,
         fontWeight: '600',
         lineHeight: Typography.bodyMd.lineHeight,
+    },
+    transactionRight: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: Spacing.sm,
+    },
+    transactionDeleteBtn: {
+        padding: 4,
     },
 });
