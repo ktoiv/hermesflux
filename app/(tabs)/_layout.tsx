@@ -25,8 +25,8 @@ export default function TabLayout() {
                 tabBarStyle: {
                     backgroundColor: colors.surface,
                     borderTopWidth: 0,
-                    height: 80 + insets.bottom,
-                    paddingBottom: insets.bottom + 14,
+                    height: 60 + insets.bottom,
+                    paddingBottom: insets.bottom + 2,
                     paddingTop: 6,
                     shadowColor: '#000',
                     shadowOffset: { width: 0, height: -4 },
@@ -37,13 +37,15 @@ export default function TabLayout() {
                 tabBarActiveTintColor: colors.primary,
                 tabBarInactiveTintColor: colors.tabIconDefault,
                 tabBarShowLabel: true,
-                tabBarLabelStyle: {
-                    fontSize: 11,
-                    lineHeight: 14,
-                    fontWeight: '600',
-                    marginTop: 4,
-                    marginBottom: 4,
-                },
+                    tabBarLabelStyle: {
+                        fontSize: 11,
+
+                        fontWeight: '600',
+
+                        marginTop: 2,
+
+                        marginBottom: 0,
+                    },
                 tabBarIconStyle: {
                     marginBottom: 0,
                 },

@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { Image } from 'expo-image';
 import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity, Modal, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
@@ -132,7 +133,9 @@ export default function PortfolioScreen() {
             <SafeAreaView edges={['top']} style={styles.safeTop}>
                 <View style={styles.header}>
                     <View style={styles.headerLeft}>
-                        <Text style={[styles.headerTitle, { color: colors.onSurface }]}>Portfolio</Text>
+                        <View style={[styles.avatar, { backgroundColor: colors.background }]}>
+                            <Image source={require('@/theme-light-mode.jpg')} style={styles.avatarImage} />
+                        </View>
                     </View>
                 </View>
             </SafeAreaView>
@@ -206,7 +209,7 @@ export default function PortfolioScreen() {
             <Modal visible={editing != null} transparent animationType="fade" onRequestClose={() => setEditing(null)}>
                 <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setEditing(null)}>
                     <TouchableOpacity
-                        style={[styles.modalCard, { backgroundColor: colors.surface }]}
+                        style={[styles.modalCard, { backgroundColor: colors.background }]}
                         activeOpacity={1}
                         onPress={() => {}}
                     >
@@ -275,12 +278,8 @@ const styles = StyleSheet.create({
         paddingVertical: Spacing.md,
     },
     headerLeft: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm + 4 },
-    headerTitle: {
-        fontSize: Typography.h1.fontSize,
-        fontWeight: Typography.h1.fontWeight,
-        lineHeight: Typography.h1.lineHeight,
-        letterSpacing: Typography.h1.letterSpacing,
-    },
+    avatar: { width: 52, height: 52, borderRadius: Radius.full, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+    avatarImage: { width: 52, height: 52 },
     flex: { flex: 1 },
     scrollContent: { paddingHorizontal: Spacing.margin, paddingBottom: 120 },
     summaryCard: {

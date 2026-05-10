@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { Image } from "expo-image";
 import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
@@ -47,7 +48,11 @@ export default function AnnualScreen() {
         <View style={[styles.root, { backgroundColor: colors.background }]}>
             <SafeAreaView edges={['top']} style={styles.safeTop}>
                 <View style={styles.header}>
-                    <Text style={[styles.headerTitle, { color: colors.onSurface }]}>Annual Expenses</Text>
+                    <View style={styles.headerLeft}>
+                        <View style={[styles.avatar, { backgroundColor: colors.background }]}>
+                            <Image source={require('@/theme-light-mode.jpg')} style={styles.avatarImage} />
+                        </View>
+                    </View>
                 </View>
             </SafeAreaView>
 
@@ -159,12 +164,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingVertical: Spacing.md,
     },
-    headerTitle: {
-        fontSize: Typography.h1.fontSize,
-        fontWeight: Typography.h1.fontWeight,
-        lineHeight: Typography.h1.lineHeight,
-        letterSpacing: Typography.h1.letterSpacing,
-    },
+    headerLeft: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm + 4 },
+    avatar: { width: 52, height: 52, borderRadius: Radius.full, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+    avatarImage: { width: 52, height: 52 },
     flex: { flex: 1 },
     scrollContent: { paddingHorizontal: Spacing.margin, paddingBottom: 120 },
     summaryCard: {

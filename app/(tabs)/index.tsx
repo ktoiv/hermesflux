@@ -303,8 +303,9 @@ export default function DashboardScreen() {
             <SafeAreaView edges={['top']} style={styles.safeTop}>
                 <View style={styles.header}>
                     <View style={styles.headerLeft}>
-                        <Image source={require('@/theme-light-mode.jpg')} style={styles.avatar} />
-                        <Text style={[styles.headerTitle, { color: colors.onSurface }]}>Hermes Flux</Text>
+                        <View style={[styles.avatar, { backgroundColor: colors.background }]}>
+                            <Image source={require('@/theme-light-mode.jpg')} style={styles.avatarImage} />
+                        </View>
                     </View>
                 </View>
             </SafeAreaView>
@@ -420,7 +421,8 @@ const styles = StyleSheet.create({
         paddingVertical: Spacing.md,
     },
     headerLeft: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm + 4 },
-    avatar: { width: 40, height: 40, borderRadius: Radius.full },
+    avatar: { width: 52, height: 52, borderRadius: Radius.full, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+    avatarImage: { width: 52, height: 52 },
     headerTitle: { fontSize: Typography.h3.fontSize, fontWeight: '700', letterSpacing: Typography.h3.letterSpacing },
     monthNav: {
         flexDirection: 'row',
